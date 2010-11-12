@@ -1,0 +1,51 @@
+<h1>Consulta codigo <%= @orden.try(:orden_servicio) %></h1>
+<form action="/consultas/codigo" method="get">
+  <input id="orden_servicio" name="orden_servicio" type="text" />
+  <input type="submit" value="Buscar" />
+</form>
+
+<% unless @orden.nil? %>
+  <label for=""></label>
+
+  <p>
+    <label for="">Orden de Servicio</label>
+    <%= @orden.orden_servicio %>
+  </p>
+
+  <p>
+    <label for="">Número de carpeta</label>
+    <%= @orden.nro_carpeta %>
+  </p>
+
+  <p>
+    <label for="">Liquidador</label>
+    <%= @orden.personal %>
+  </p>
+
+  <p>
+    <label for="">Fecha liquidación</label>
+    <%= l @orden.liquidacion.fecha, :format => "%d, %B %Y" %>
+  </p>
+
+  <p>
+    <label for="">Total despacho</label>
+    <%= @orden.liquidacion.total_despacho %>
+  </p>
+
+  <p>
+    <label for="">Saldo deudor</label>
+    <%= @orden.liquidacion.saldo %>
+  </p>
+
+  <h2>Documentos</h2>
+
+  <table class="normal">
+    <% @orden.documento.documento.each do |k, v| %>
+      <tr>
+      	<th><%= Documento::DOCUMENTOS[k] %></th>
+      	<td><%= v %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+

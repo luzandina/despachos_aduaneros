@@ -1,0 +1,50 @@
+<h1>Lista de Seguimiento</h1>
+<%= link_to 'Nuevo Seguimiento', new_seguimiento_path %>
+<table border="1">
+  <tr>
+    <th>Orden Servicio - Nro Carpeta </th>
+    <th>Liquidador</th>
+    <th>Cliente</th>
+    <th>Mercancia</th>
+    <th>Recinto</th>
+    <th>Regimen</th>
+    <th>Elaboracion dav</th>
+    <th>Elaboracion dui</th>
+    <th>Validacion dui</th>
+    <th>Numero registro</th>
+    <th>Pago tributos</th>
+    <th>Canal</th>
+    
+  </tr>
+
+<% @seguimientos.each do |seguimiento| %>
+  <tr>
+    <td><%=h documento.carpeta %></td>
+    <td><%=h documento.carpeta.personal %></td>
+    <td><%=h documento.carpeta.cliente %></td>
+    <td><%=h documento.mercancia %></td>
+    <td><%=h seguimiento.recinto %></td>
+    <td><%=h seguimiento.regimen %></td>
+    <td><%=h seguimiento.elaboracion_dav %></td>
+    <td><%=h seguimiento.elaboracion_dui %></td>
+    <td><%=h seguimiento.validacion_dui %></td>
+    <td><%=h seguimiento.numero_registro %></td>
+    <td><%=h seguimiento.pago_tributos %></td>
+    <td><%=h seguimiento.canal %></td>
+    <td><%=h seguimiento.imprecion_dui_dav %></td>
+    <td><%=h seguimiento.presentacion_carpeta %></td>
+    <td><%=h seguimiento.tecnico_aduana %></td>
+    <td><%=h seguimiento.levante_mercancia %></td>
+    <td><%=h seguimiento.pago_almacenaje_entrega %></td>
+    <td><%=h seguimiento.facturacion %></td>
+    <td><%=h seguimiento.observaciones %></td>
+    
+    <td><%= link_to 'Ver', seguimiento %></td>
+    <td><%= link_to 'Editar', edit_seguimiento_path(seguimiento) %></td>
+    <td><%= link_to 'Borrar', seguimiento, :confirm => 'estas seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

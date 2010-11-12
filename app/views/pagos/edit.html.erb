@@ -1,0 +1,28 @@
+<h1>Editing pago</h1>
+
+<% form_for(@pago) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :liquidacion_id %><br />
+    <%= f.text_field :liquidacion_id %>
+  </p>
+  <p>
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </p>
+  <p>
+    <%= f.label :cantidad %><br />
+    <%= f.text_field :cantidad %>
+  </p>
+  <p>
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pago %> |
+<%= link_to 'Back', pagos_path %>

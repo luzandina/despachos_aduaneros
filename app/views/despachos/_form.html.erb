@@ -1,0 +1,41 @@
+<% form_for(@despacho) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :orden_servicio %><br />
+    <%= f.text_field :orden_servicio %>
+  </p>
+  <p>
+    <%= f.label :nro_carpeta %><br />
+    <%= f.text_field :nro_carpeta %>
+  </p>
+  <p>
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </p>
+  <p>
+    <%= f.label :cliente %><br />
+    <%= f.text_field :cliente %>
+  </p>
+  <p>
+    <%= f.label :estado %><br />
+    <%= f.text_field :estado %>
+  </p>
+  <p>
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </p>
+  
+  <p>
+    <%= f.label :total %><br />
+    <%= f.text_field :total %>
+  </p>
+  <p>
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </p>
+  <p>
+    <%= f.submit 'Salvar' %>
+  </p>
+<% end %>
+

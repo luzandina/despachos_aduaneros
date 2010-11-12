@@ -1,0 +1,41 @@
+<% form_for(@usuario) do |f| %>
+  <%= f.error_messages %>
+  
+<table width="30%" align="center"  >
+  <tr>
+    <td>
+      <p>
+        <%= f.label :nombres %><br />
+        <%= f.text_field :nombres %>
+      </p>
+      <p>
+        <%= f.label :paterno %><br />
+        <%= f.text_field :paterno %>
+      </p>
+      <p>
+        <%= f.label :materno %><br />
+        <%= f.text_field :materno %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :password, "Contrasena" %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation, "Confirmacion Contrasena" %><br />
+        <%= f.password_field :password_confirmation %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+      <p align = 'center'>
+        <%= f.submit 'Salvar' %>
+      </p>
+    
+<% end %>
+
+

@@ -1,0 +1,36 @@
+<h1>Lista Despachos Aduaneros</h1>
+
+<table border="1">
+  <tr>
+    <th>Orden Servicio</th>
+    <th>Nro Carpeta</th>
+    <th>Fecha</th>
+    <th>Cliente</th>
+    <th>Estado</th>
+    <th>Tipo</th>
+    <th>Fecha Cierre</th>
+    <th>Total</th>
+    <th>Descripcion</th>
+  </tr>
+
+<% @despachos.each do |despacho| %>
+  <tr>
+    <td><%=h despacho.orden_servicio %></td>
+    <td><%=h despacho.nro_carpeta %></td>
+    <td><%=h despacho.fecha %></td>
+    <td><%=h despacho.cliente %></td>
+    <td><%=h despacho.estado %></td>
+    <td><%=h despacho.tipo %></td>
+    <td><%=h despacho.fecha_cierre %></td>
+    <td><%=h despacho.total %></td>
+    <td><%=h despacho.descripcion %></td>
+    <td><%= link_to 'Ver', despacho %></td>
+    <td><%= link_to 'Editar', edit_despacho_path(despacho) %></td>
+    <td><%= link_to 'Eliminar', despacho, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Despacho', new_despacho_path %>

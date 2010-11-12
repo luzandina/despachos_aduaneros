@@ -1,0 +1,24 @@
+<h1>Lista Estado Despachos</h1>
+
+<table border="1">
+  <tr>
+    <th>id</th>
+    <th>Estado Despacho</th>
+    <th>Descripcion Estado</th>
+  </tr>
+
+<% @estado_despachos.each do |estado_despacho| %>
+  <tr>
+    <td><%=h estado_despacho.es_desp_id %></td>
+    <td><%=h estado_despacho.es_despacho %></td>
+    <td><%=h estado_despacho.descripcion_estado %></td>
+    <td><%= link_to 'Ver', estado_despacho %></td>
+    <td><%= link_to 'Editar', edit_estado_despacho_path(estado_despacho) %></td>
+    <td><%= link_to 'Eliminar', estado_despacho, :confirm => 'Estas Seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Estado Despacho', new_estado_despacho_path %>

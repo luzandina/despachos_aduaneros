@@ -1,0 +1,28 @@
+<% form_for(@departamento) do |f| %>
+  <%= f.error_messages %>
+
+<table width="40%" align="center"  >
+  <tr>
+    <td>  
+  
+        <p>
+          <%= f.label :departamento %><br />
+          <%= f.text_field :departamento %>
+        </p>
+        
+        <p>
+          <%= f.label :descripcion %><br />
+          <%= f.text_field :descripcion %>
+        </p>
+        
+      </td>
+  </tr>
+</table>
+
+      <p align="center">
+       <%= f.submit 'Salvar' %>
+     </p>
+    
+<% end %>
+
+

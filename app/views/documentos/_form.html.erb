@@ -1,0 +1,116 @@
+<style type="text/css">
+  ul li label{
+    width: 15em;
+    display: inline-block;
+  }
+</style>
+<% form_for(@documento) do |f| %>
+  <%= f.error_messages %>
+
+<table  width="70%" align="center" >
+  <tr >
+    <td >
+        <%= f.label :carpeta_id, 'Orden Servicio' %><br />
+        <%= f.collection_select :carpeta_id, Carpeta.all(:order => 'orden_servicio ASC'), :id, :to_s, :include_blank => true %>
+           
+      <p>
+        <label for="">Liquidador</label>
+        <div id="liquidador"></div>
+      </p>
+      
+      <p>
+        <%= f.label :fecha %><br />
+        <%= f.date_select :fecha %>
+      </p>
+      
+      <td >  
+        
+          <label for="">Cliente</label><br />
+          <div  id="cliente_nombre" ></div>
+        
+        
+        <p> 
+          <label for="">NIT o CI</label><br />
+          <div id="cliente_nit_ci"></div>
+        </p>
+        
+        <p> 
+          <%= f.label :mercancia %><br />
+          <%= f.text_field :mercancia %>
+        </p>
+        
+        <p>
+          <%= f.label :peso %><br />
+          <%= f.text_field :peso %>
+        </p>
+      </td>
+    </td>
+  </tr>
+  
+</table>
+     <br /> 
+ <table  width="80%" align="center">
+  <tr>
+    <td>
+     <!--<p>Listado documentos-->
+    <ul class="documentos">
+      <% Documento::DOCUMENTOS.each do |k, v| %>
+        <li>
+          <label><%= check_box_tag( "documento_sel", 1, @documento.documento[k] ) %><%= v %></label>
+          <% arr = [[]] + Documento::TIPOS.map{ |d| [d, d]} %>
+          <%= select_tag "documento[documento][#{k}]", options_for_select( arr, @documento.documento[k] ), :disabled => @documento.documento[k].nil? %>
+
+        </li>
+      <% end %>
+    </ul>
+  
+    </td>
+    <td>
+      <p>
+         <%= f.label :OBSERVACIONES %><br />
+         <%= f.text_area :descripcion_documentos, :rows => 12 %>
+      </p>
+   </td>
+    
+  </tr>
+ </table><br /> 
+ 
+      <p align="center">
+        <%= f.submit 'Salvar' %>
+      </p>
+    
+<% end %>
+
+<script type="text/javascript">
+jQuery(function($) {
+  // Listado de clientes convertido a JSON
+    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.nit_ci } ; h  }.to_json %>;
+
+  function llenarCliente(id) {
+    if(id) {
+      var cliente = clientes[ id ];
+      $('#cliente_nombre').html(cliente.cliente);
+      $('#cliente_nit_ci').html(cliente.nit);
+      $('#liquidador').html(cliente.liquidador);
+      }else{
+        $('#cliente_nombre').html('');
+        $('#cliente_nit_ci').html('');
+        $('#liquidador').html('');
+      }
+  }
+
+  // Evento para poder ver clientes
+  $('#documento_carpeta_id').bind('change keyup', function() {
+    llenarCliente($(this).val())
+  });
+
+  if( $('#documento_carpeta_id').val() ) {
+    llenarCliente($('#documento_carpeta_id').val());
+  }
+     
+
+  $('ul.documentos input:checkbox').click(function() {
+    $(this).parents('label:first').next('select').attr('disabled', !$(this).attr('checked') );
+  });
+});
+</script>

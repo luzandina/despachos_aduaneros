@@ -1,0 +1,28 @@
+<h1>Lista de Carpetas</h1>
+
+<%= link_to 'Nueva Carpeta', new_carpeta_path %>
+
+<table border="1">
+  <tr>
+    <th>Fecha</th>
+    <th>Orden Servicio</th>
+    <th>Nro Carpeta</th>
+    <th>Liquidador</th>
+    <th>Clientes</th>
+  </tr>
+
+<% @carpetas.each do |carpeta| %>
+  <tr>
+    <td><%=h carpeta.fecha %></td>
+    <td><%=h carpeta.orden_servicio %></td>
+    <td><%=h carpeta.nro_carpeta %></td>
+    <td><%=h carpeta.personal %></td>
+    <td><%=h carpeta.cliente %></td>
+    <td>
+      <%= link_to("ver", carpeta ) %>
+      <%= link_to("editar", edit_carpeta_path(carpeta) ) %>
+      <%= link_to("borrar", carpeta, :method => :delete, :confirm => 'Esta seguro?' ) %>
+    </td>
+  </tr>
+<% end %>
+</table>

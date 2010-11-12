@@ -1,0 +1,23 @@
+<% form_for(@estado_despacho) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :es_desp_id, "id" %><br />
+    <%= f.text_field :es_desp_id %>
+  </p>
+  
+  <p>
+    <%= f.label :es_despacho, "Estado Despacho" %><br />
+    <%= f.text_field :es_despacho %>
+  </p>
+  
+  <p>
+    <%= f.label :descripcion_estado, "Descripcion Estado" %><br />
+    <%= f.text_field :descripcion_estado %>
+  </p>
+  <p>
+    <%= f.submit 'Salvar' %>
+  </p>
+<% end %>
+
+

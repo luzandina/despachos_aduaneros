@@ -1,0 +1,244 @@
+<p>
+  <b>Orden servicio:</b>
+  <%=h @liquidacion.carpeta %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%=h @liquidacion.carpeta.cliente %>
+</p>
+
+<p>
+  <b>Liquidador:</b>
+  <%=h @liquidacion.carpeta.personal %>
+</p>
+
+<p>
+  <b>Mercancia:</b>
+  <%=h @liquidacion.carpeta.documento.mercancia %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%=h @liquidacion.item %>
+</p>
+
+<p>
+  <b>Arancel:</b>
+  <%=h @liquidacion.arancel %>
+</p>
+
+<p>
+  <b>Fob dolares:</b>
+  <%=h @liquidacion.fob_dolares %>
+</p>
+
+<p>
+  <b>Seguro:</b>
+  <%=h @liquidacion.seguro %>
+</p>
+
+<p>
+  <b>Flete I:</b>
+  <%=h @liquidacion.flete_I %>
+</p>
+
+<p>
+  <b>Flete II:</b>
+  <%=h @liquidacion.flete_II %>
+</p>
+
+<p>
+  <b>Otros Gastos:</b>
+  <%=h @liquidacion.otros_gastos %>
+</p>
+
+<p>
+  <b>Cif Dolares:</b>
+  <%=h @liquidacion.cif_dolares %>
+</p>
+
+<p>
+  <b>Cif Bolivianos:</b>
+  <%=h @liquidacion.cif_bolivianos %>
+</p>
+<!--<p>
+<p>
+  <b>Base Imponible:</b>
+  <%=h @liquidacion.base_imponible %>
+</p>
+ -->
+<p>
+  <b>GA:</b>
+  <%=h @liquidacion.ga %>
+</p>
+
+<p>
+  <b>IVA:</b>
+  <%=h @liquidacion.iva %>
+</p>
+
+<p>
+  <b>ICE:</b>
+  <%=h @liquidacion.ice %>
+</p>
+
+<p>
+  <b>DUI:</b>
+  <%=h @liquidacion.diu %>
+</p>
+
+<p>
+  <b>Total impuestos:</b>
+  <%=h @liquidacion.total_impuestos %>
+</p>
+
+<p>
+  <b>Almacenaje:</b>
+  <%=h @liquidacion.almacenaje %>
+</p>
+
+<p>
+  <b>Camara comercio:</b>
+  <%=h @liquidacion.camara_comercio %>
+</p>
+
+<p>
+  <b>Senasac:</b>
+  <%=h @liquidacion.senasac %>
+</p>
+
+<p>
+  <b>Otros 1:</b>
+  <%=h @liquidacion.otros_1 %>
+</p>
+
+<p>
+  <b>Otros 2:</b>
+  <%=h @liquidacion.otros_2 %>
+</p>
+
+<p>
+  <b>Gastos tramite:</b>
+  <%=h @liquidacion.gastos_tramite %>
+</p>
+
+<p>
+  <b>Nuestros servicios:</b>
+  <%=h @liquidacion.nuestros_servicios %>
+</p>
+
+<p>
+  <b>Total servicios:</b>
+  <%=h @liquidacion.total_servicios %>
+</p>
+
+<p>
+  <b>Total despacho:</b>
+  <%=h @liquidacion.total_despacho %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%=h @liquidacion.descripcion %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%=h @liquidacion.fecha %>
+</p>
+
+<h2>Pagos</h2>
+
+<h3>Saldo de <span class="saldo"><%= @liquidacion.saldo %></span></h3>
+
+<table class="decorated">
+	<tr>
+		<th>Fecha</th>
+		<th>Cantidad</th>
+		<th>Saldo</th>
+  </tr>
+  <% @saldo = @liquidacion.total_despacho %>
+  <% @liquidacion.pagos.each do |pago| %>
+    <tr>
+    	<td><%= pago.fecha.strftime("%d-%m-%Y") %></td>
+    	<td class="r"><%= pago.cantidad %></td>
+    	<td class="r"><%= @saldo = @saldo.to_f - pago.cantidad %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to 'Pagar', new_pago_path(:liquidacion_id => @liquidacion.id), :id => 'pagar_link' %>
+
+<hr />
+
+<%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %> |
+<%= link_to 'Atras', liquidacions_path %>
+
+<div id="mask"></div>
+
+<div id="pagar" class="dialog" style="width:500px; overflow: auto; height:400px;position:absolute"><span class="close"></span>
+  <div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  function parsearFecha(fecha) {
+    var f = fecha.split('-');
+    return f[2] + '-' + f[1] + '-' + f[0];
+  }
+
+  function adicionarFila(resp) {
+    html = ['<tr>',
+         '<td>', parsearFecha(resp.fecha), '</td>',
+         '<td class="r">', resp.cantidad, '</td>',
+         '<td class="r">', resp.saldo, '</td>',
+        '</tr>'
+      ];
+
+    $('table.decorated').append(html.join(''));
+  }
+
+  $(document).ready(function() {
+      $('#pagar_link').click(function() {
+      var pos = $(this).position();
+      $('#pagar').css({'top': (pos.top - 400) + 'px', 'left': (pos.left) + 'px'});
+      $('#pagar div').load($(this).attr("href") );
+
+        showDialog($('div.dialog'));
+        return false;
+      });
+
+
+      $('#pagar form').live("submit", function() {
+        
+        var el = this;
+        data = serializeFormElements(this);
+
+        $.ajax({
+          'url': $(el).attr('action'),
+          'context':el,
+          'data':data,
+          'type': (data['_method'] || 'post'),
+          'dataType': 'json',
+          'success': function(resp) {
+            var p = $(el).parents('div.ajax-modal');
+            hideDialog();
+            $('span.saldo').html(resp.saldo);
+            adicionarFila(resp);
+          },
+          'error': function(resp) {
+            $('#pagar div').html(resp.responseText);
+            alert('Existen errores en su formulario por favor corrija los errores');
+          }
+        });
+
+        return false;
+      });
+
+
+  });
+</script>

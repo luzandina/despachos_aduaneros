@@ -1,0 +1,23 @@
+<h1>Lista Paises</h1>
+<%= link_to 'Nuevo Pais', new_pai_path %>
+<table border = "1">
+  <tr>
+   
+    <th>Pais</th>
+    <th>Descripcion</th>
+  </tr>
+
+<% @pais.each do |pai| %>
+  <tr>
+    
+    <td><%=h pai.pais %></td>
+    <td><%=h pai.descripcion %></td>
+    <td><%= link_to 'Ver', pai %></td>
+    <td><%= link_to 'Editar', edit_pai_path(pai) %></td>
+    <td><%= link_to 'Eliminar', pai, :confirm => 'Estas seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

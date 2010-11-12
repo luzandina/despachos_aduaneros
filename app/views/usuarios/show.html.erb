@@ -1,0 +1,28 @@
+<p>
+  <b>Nombres:</b>
+  <%=h @usuario.nombres %>
+</p>
+
+<p>
+  <b>Paterno:</b>
+  <%=h @usuario.paterno %>
+</p>
+
+<p>
+  <b>Materno:</b>
+  <%=h @usuario.materno %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @usuario.email %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @usuario.password %>
+</p>
+
+
+<%= link_to 'Editar', edit_usuario_path(@usuario) %> |
+<%= link_to 'Atras', usuarios_path %>

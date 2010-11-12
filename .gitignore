@@ -1,0 +1,16 @@
+*.log
+*.swo
+*.swp
+nohup.out
+config/database.yml
+db/sphinx
+db/schema.rb
+public/system
+public/attachment_metadatas
+!.gitkeep
+tmp/*
+seema_pdf_doc
+public/javascripts/*.zip
+doc/wireframes
+*.*~
+Gemfile.lock

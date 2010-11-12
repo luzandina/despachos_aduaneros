@@ -1,0 +1,58 @@
+<p>
+  <b>Nombres:</b>
+  <%=h @personal.nombres %>
+</p>
+
+<p>
+  <b>Paterno:</b>
+  <%=h @personal.paterno %>
+</p>
+
+<p>
+  <b>Materno:</b>
+  <%=h @personal.materno %>
+</p>
+
+<p>
+  <b>Cedula Identidad:</b>
+  <%=h @personal.cedula_identidad %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%=h @personal.direccion %>
+</p>
+
+<p>
+  <b>Cargo:</b>
+  <%=h @personal.cargo %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @personal.email %>
+</p>
+
+<p>
+  <b>Fecha Ingreso:</b>
+  <%=h @personal.fecha_ingreso %>
+</p>
+
+<p>
+  <b>Fecha Salida:</b>
+  <%=h @personal.fecha_salida %>
+</p>
+
+<p>
+  <b>Sueldo:</b>
+  <%=h @personal.sueldo %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%=h @personal.telefono %>
+</p>
+
+
+<%= link_to 'Editar', edit_personal_path(@personal) %> |
+<%= link_to 'Atras', personals_path %>

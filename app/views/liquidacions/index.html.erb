@@ -1,0 +1,46 @@
+<h1>Lista Liquidacion</h1>
+
+<%= link_to 'Nueva Liquidacion', new_liquidacion_path %>
+
+<table border="1">
+  <tr>
+    <th>Fecha</th>
+    <th>Orden servicio</th>
+    <th>Cliente</th>
+    <th>Personal</th>
+    <th>Fob dolares</th>
+    <th>Cif bolivianos</th>
+    <th>Total impuestos</th>
+    <th>Gastos tramite</th>
+    <th>Nuestros servicios</th>
+    <th>Total servicios</th>
+    <th>Total despacho</th>
+    <th>Saldo</th>
+    
+    
+  </tr>
+
+<% @liquidacions.each do |liquidacion| %>
+  <tr>
+    <td><%=h l liquidacion.fecha, :format => "%d %b %Y" %></td>
+    <td><%=h liquidacion.carpeta %></td>
+    <td><%=h liquidacion.carpeta.cliente %></td>
+    <td><%=h liquidacion.carpeta.personal %></td>
+    <td><%= liquidacion.fob_dolares %></td>
+    <td><%= liquidacion.cif_bolivianos %></td>
+    <td><%= liquidacion.total_impuestos %></td>
+    <td><%= liquidacion.gastos_tramite %></td>
+    <td><%= liquidacion.nuestros_servicios %></td>
+    <td><%= liquidacion.total_servicios %></td>
+    <td><%= liquidacion.total_despacho %></td>
+    <td><%= liquidacion.saldo %></td>
+        
+    <td><%= link_to 'Ver', liquidacion %></td>
+    <td><%= link_to 'Editar', edit_liquidacion_path(liquidacion) %></td>
+    <td><%= link_to 'Eliminar', liquidacion, :confirm => 'Estas Seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

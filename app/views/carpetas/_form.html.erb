@@ -1,0 +1,37 @@
+<% form_for(@carpeta) do |f| %>
+  <%= f.error_messages %>
+<table  width="50%" align="center"  >
+  <tr>
+    <td>
+      <%= f.label :fecha %><br />
+        <%= f.date_select :fecha %>
+      
+      <p>
+        <%= f.label :orden_servicio %><br />
+        <%= f.text_field :orden_servicio %>
+      </p>
+      
+      <p>
+       <%= f.label :nro_carpeta %><br />
+        <%= f.text_field :nro_carpeta %>
+      </p>
+      
+    </td> 
+    <td>
+      <p>
+        <%= f.label :personal_id, "Liquidador" %><br />
+        <%= f.collection_select :personal_id, Personal.all(:order => 'nombres ASC'), :id, :to_s, :include_blank => true %>
+      </p>
+      <p>
+        <%= f.label :cliente_id, 'Cliente' %><br />
+        <%= f.collection_select :cliente_id, Cliente.all(:order => 'nombre ASC'), :id, :to_s, :include_blank => true %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+      <p align="center">
+        <%= f.submit 'Salvar' %>
+      </p>
+    
+<% end %>

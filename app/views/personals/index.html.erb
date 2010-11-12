@@ -1,0 +1,41 @@
+<h1>Lista del Personal Mariaca Morales</h1>
+
+<%= link_to 'Nuevo Personal', new_personal_path %>
+
+<table border="1">
+  <tr>
+    <th>Nombres</th>
+    <th>Paterno</th>
+    <th>Materno</th>
+    <th>Cedula Identidad</th>
+    <th>Direccion</th>
+    <th>Cargo</th>
+    <th>Email</th>
+    <th>Fecha Ingreso</th>
+    <th>Fecha Salida</th>
+    <th>Sueldo</th>
+    <th>Telefono</th>
+  </tr>
+
+<% @personals.each do |personal| %>
+  <tr>
+    <td><%=h personal.nombres %></td>
+    <td><%=h personal.paterno %></td>
+    <td><%=h personal.materno %></td>
+    <td><%=h personal.cedula_identidad %></td>
+    <td><%=h personal.direccion %></td>
+    <td><%=h personal.cargo %></td>
+    <td><%=h personal.email %></td>
+    <td><%=h personal.fecha_ingreso %></td>
+    <td><%=h personal.fecha_salida %></td>
+    <td><%=h personal.sueldo %></td>
+    <td><%=h personal.telefono %></td>
+    <td><%= link_to 'Ver', personal %></td>
+    <td><%= link_to 'Editar', edit_personal_path(personal) %></td>
+    <td><%= link_to 'Eliminar', personal, :confirm => 'Estas seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

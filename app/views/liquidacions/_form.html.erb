@@ -1,0 +1,231 @@
+<% form_for(@liquidacion) do |f| %>
+  <%= f.error_messages %>
+
+<table  width="60%" align="center" >
+  <tr >
+    <td >
+        <%= f.label :carpeta_id, 'Orden Servicio' %><br />
+        <%= f.collection_select :carpeta_id, Carpeta.all(:order => 'orden_servicio ASC'), :id, :to_s, :include_blank => true %>
+           
+      <p>
+        <label>Liquidador</label><br />
+        <div id="liquidador"></div>
+      <p>
+      
+      <p>
+        <%= f.label :fecha %><br />
+        <%= f.date_select :fecha %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <label>Cliente</label><br />
+        <div  id="cliente" ></div>
+      </p>
+            
+      <p>
+        <label>Mercancia</label><br />
+        <div id="mercancia"></div>
+      </p>
+      <p>
+        <%= f.label :item %><br />
+        <%= f.text_field :item, :size => 4 %>
+      </p>
+    </td>
+  </tr>
+</table>
+<br />  
+<table  width="60%" align="center" >
+  <tr>
+    <td><h1>CIF</h1>
+      <p>
+        <%= f.label :fob_dolares, 'FOB - USD.' %><br />
+        <%= f.text_field :fob_dolares, :class => 'g1', :size => 15  %><br />
+      
+        <%= f.label :seguro, 'Seguro - USD.' %><br />
+        <%= f.text_field :seguro, :class => 'g1', :size => 15 %><br />
+      
+        <%= f.label :flete_I, 'Flete I - USD.' %><br />
+        <%= f.text_field :flete_I, :class => 'g1', :size => 15 %><br />
+      
+        <%= f.label :flete_II, 'Flete II - USD.' %><br />
+        <%= f.text_field :flete_II, :class => 'g1', :size => 15 %><br />
+      
+        <%= f.label :otros_gastos, 'Otros Gastos - USD.' %><br />
+        <%= f.text_field :otros_gastos, :class => 'g1', :size => 15 %><br />
+      
+        <%= f.label :cif_dolares, 'TOTAL CIF - USD.' %><br />
+        <%= f.text_field :cif_dolares, :disabled => true, :size => 15 %><br />
+      
+        <%= f.label :cif_bolivianos, 'TOTAL CIF - Bs.' %><br />
+        <%= f.text_field :cif_bolivianos, :disabled => true, :size => 15 %><br />
+      <!--<p>
+        <%= f.label :base_imponible, 'Base Imponoble - Bs.' %><br />
+        <%= f.text_field :base_imponible %>
+        -->
+      </p>
+    </td>
+    <td>
+      
+        <%= f.label :base_imponible, 'Tipo Cambio = Bs. 7.07' %><br />
+        
+        <%= f.label :arancel, 'Arancel' %><br />
+        <%= f.text_field :arancel, :size => 15 %><br />
+        
+      <p><h1>Impuestos</h1>  
+        <%= f.label :ga, 'GA 10% - Bs.' %><br />
+        <%= f.text_field :ga, :class => 'g2', :disabled => true, :size => 15 %><br />
+      
+        <%= f.label :iva, 'IVA 14.94% - Bs.' %><br />
+        <%= f.text_field :iva, :class => 'g2', :disabled => true, :size => 15 %><br />
+      
+        <%= f.label :ice, 'ICE 18% - Bs.' %><br />
+        <%= f.text_field :ice, :class => 'g2', :disabled => true, :size => 15 %><br />
+        
+        <%= f.label :diu, 'DUI - Bs.' %><br />
+        <%= f.text_field :diu, :class => 'g2', :size => 15 %><br />
+      </p>   
+      <p>     
+        <%= f.label :total_impuestos, 'TOTAL IMPUESTOS - Bs.' %><br />
+        <%= f.text_field :total_impuestos, :disabled => true, :class => 'tot', :size => 15 %>
+      </p>
+    </td>
+  </tr>
+</table>
+<br />
+<table "width="60%" align="center" >
+  <tr>
+    <td><h1>Servicios</h1>
+      <p>
+        <%= f.label :almacenaje, 'Almacenaje - Bs.' %><br />
+        <%= f.text_field :almacenaje, :class => 'g3', :size => 15 %><br />
+      
+        <%= f.label :camara_comercio, 'Camara de Comercio - Bs.' %><br />
+        <%= f.text_field :camara_comercio, :class => 'g3', :size => 15 %><br />
+      
+        <%= f.label :senasac, 'SENASAC - Bs.' %><br />
+        <%= f.text_field :senasac, :class => 'g3', :size => 15 %><br />
+      
+        <%= f.label :otros_1, 'IBNORCA - Bs.' %><br />
+        <%= f.text_field :otros_1, :class =>'g3', :size => 15 %><br />
+      
+        <%= f.label :otros_2, 'IBMETRO - Bs.' %><br />
+        <%= f.text_field :otros_2, :class => 'g3', :size => 15 %><br />
+      
+        <%= f.label :gastos_tramite, 'Gastos Tramite - Bs.' %><br />
+        <%= f.text_field :gastos_tramite, :class => 'g3', :size => 15 %><br />
+      
+        <%= f.label :nuestros_servicios, 'Nuestros Servicios - Bs.' %><br />
+        <%= f.text_field :nuestros_servicios, :class => 'g3', :size => 15 %><br />
+      
+        
+      </p>
+    </td>
+
+    <td>  
+      
+        <%= f.label :total_servicios, 'TOTAL SERVICIOS Bs.' %><br />
+        <%= f.text_field :total_servicios, :disabled => true, :class => 'tot', :size => 15 %><br />
+        
+      <p><h1>Total</h1>
+        <%= f.label :total_despacho, 'TOTAL DESPACHO - Bs.' %><br />
+        <%= f.text_field :total_despacho, :disabled => true, :size => 15 %>
+      </p>
+      <p>
+        <%= f.label :descripcion %><br />
+        <%= f.text_area :descripcion, :rows => 3 %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+      <p align="center">
+        <%= f.submit 'Salvar' %>
+      </p>
+    
+<% end %>
+
+<script type="text/javascript">
+jQuery(function($) {
+  
+    function ver_cliente() {
+      var val = $('#liquidacion_carpeta_id').val();
+      if(val) {
+        $.ajax({
+          'url': 'http://localhost:3000/documentos/' + val + '.json',
+          'success': function(r){
+            $('#cliente').html(r.cliente);
+            $('#liquidador').html(r.liquidador);
+            $('#mercancia').html(r.mercancia);
+          },
+          'dataType': 'json'
+        });
+      }else{
+        $('#cliente').html('');
+        $('#liquidador').html('');
+        $('#mercancia').html('');
+      }
+    }
+   
+    $('#liquidacion_carpeta_id').change(function() {
+      ver_cliente();
+    });
+    ver_cliente();
+    
+    //VALOR CIF
+    //var arr = ['#liquidacion_fob_dolares', '#liquidacion_seguro', 'liquidacion_flete_I', 'liquidacion_flete_II', 'liquidacion_otros_gastos'];
+    $('input.g1').blur(function() { 
+      var tot_cif = 0;
+      $('input.g1').each(function(i, el) {
+        tot_cif += parseFloat( $(el).val() );
+      });
+      
+      $('#liquidacion_cif_dolares').val((tot_cif).toFixed(4));
+      // Convertir a Bs.
+      $('#liquidacion_cif_bolivianos').val( (tot_cif * 7.07).toFixed(0) );
+      //Calculo GA
+      $('#liquidacion_ga').val((((tot_cif * 7.07) * 10)/100).toFixed(0));
+      //Calculo ICE
+      $('#liquidacion_ice').val(((((tot_cif * 7.07) + (((tot_cif * 7.07) * 10)/100)) * 18)/100).toFixed(0));
+      //Calculo IVA
+      $('#liquidacion_iva').val(((((tot_cif * 7.07) + (((tot_cif * 7.07) * 10)/100)) * 14.94)/100).toFixed(0));
+      
+    });
+    
+    //IMPUESTOS
+    
+    $('input.g2').blur(function() { 
+      var tot_imp = 0;
+      $('input.g2').each(function(i, el) {
+        tot_imp += parseFloat( $(el).val() );
+      });  
+           
+      $('#liquidacion_total_impuestos').val(tot_imp);
+      
+    });
+    
+    //SERVICIOS
+     
+    $('input.g3').blur(function() { 
+      var tot_serv = 0;
+      $('input.g3').each(function(i, el) {
+        tot_serv += parseFloat( $(el).val() );
+      });  
+      
+      $('#liquidacion_total_servicios').val(tot_serv);
+            
+    });
+    
+    // Total despacho
+    $('.tot').change(function() {
+      var tot = 0;
+      $('input.tot').each(function(i, el) {
+        tot += parseFloat($(el).val() );
+      });
+      
+      $('#liquidacion_total_despacho').val(tot);
+      
+    });
+    
+});
+</script>

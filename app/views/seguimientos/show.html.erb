@@ -1,0 +1,95 @@
+<p>
+  <b>Orden servicio:</b>
+  <%=h @seguimiento.carpeta %>
+</p>
+p>
+  <b>Liquidador:</b>
+  <%=h @seguimiento.carpeta.personal %>
+</p>
+<p>
+  <b>Cliente:</b>
+  <%=h @seguimiento.carpeta.cliente %>
+</p>
+<p>
+  <b>Mercancia:</b>
+  <%=h @documento.carpeta.documento.mercancia %>
+</p>
+
+<p>
+  <b>Recinto:</b>
+  <%=h @seguimiento.recinto %>
+</p>
+
+<p>
+  <b>Regimen:</b>
+  <%=h @seguimiento.regimen %>
+</p>
+
+<p>
+  <b>Elaboracion DAV:</b>
+  <%=h @seguimiento.elaboracion_dav %>
+</p>
+
+<p>
+  <b>Elaboracion DUI:</b>
+  <%=h @seguimiento.elaboracion_dui %>
+</p>
+
+<p>
+  <b>Validacion DUI:</b>
+  <%=h @seguimiento.validacion_dui %>
+</p>
+
+<p>
+  <b>Numero registro:</b>
+  <%=h @seguimiento.numero_registro %>
+</p>
+
+<p>
+  <b>Pago tributos:</b>
+  <%=h @seguimiento.pago_tributos %>
+</p>
+
+<p>
+  <b>Canal:</b>
+  <%=h @seguimiento.canal %>
+</p>
+
+<p>
+  <b>Impresion DUI-DAV:</b>
+  <%=h @seguimiento.imprecion_dui_dav %>
+</p>
+
+<p>
+  <b>Presentacion Carpeta:</b>
+  <%=h @seguimiento.presentacion_carpeta %>
+</p>
+
+<p>
+  <b>Tecnico Aduana:</b>
+  <%=h @seguimiento.tecnico_aduana %>
+</p>
+
+<p>
+  <b>Levante Mercancia:</b>
+  <%=h @seguimiento.levante_mercancia %>
+</p>
+
+<p>
+  <b>Pago almacenaje entrega:</b>
+  <%=h @seguimiento.pago_almacenaje_entrega %>
+</p>
+
+<p>
+  <b>Facturacion:</b>
+  <%=h @seguimiento.facturacion %>
+</p>
+
+<p>
+  <b>Observaciones:</b>
+  <%=h @seguimiento.observaciones %>
+</p>
+
+
+<%= link_to 'Editar', edit_seguimiento_path(@seguimiento) %> |
+<%= link_to 'Atras', seguimientos_path %>

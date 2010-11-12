@@ -1,0 +1,49 @@
+<p>
+  <b>Orden servicio:</b>
+  <%=h @documento.carpeta %>
+</p>
+
+<p>
+  <b>Liquidador:</b>
+  <%=h @documento.carpeta.personal %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%=h @documento.fecha %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%=h @documento.carpeta.cliente %>
+</p>
+
+<p>
+  <b>Mercancia:</b>
+  <%=h @documento.mercancia %>
+</p>
+
+<p>
+  <b>Peso:</b>
+  <%=h @documento.peso %>
+</p>
+
+<p>
+  <b>Documentos:</b>
+  <ul class="documentos">
+    <% @documento.documento.each do |k, v| %>
+      <li>
+        <label><%= Documento::DOCUMENTOS[k] %></label>
+        (<%= v %>)
+      </li>
+    <% end %>
+  </ul>
+</p>
+<p>
+  <b>OBSERVACIONES:</b>
+  <%=h @documento.descripcion_documentos %>
+</p>
+
+
+<%= link_to 'Editar', edit_documento_path(@documento) %> |
+<%= link_to 'Atras', documentos_path %>

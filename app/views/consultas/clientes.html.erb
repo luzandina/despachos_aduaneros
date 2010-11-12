@@ -1,0 +1,33 @@
+<h1>Consulta cliente <%= @cliente %></h1>
+<form action="/consultas/clientes" method="get">
+  <select id="cliente_id" name="cliente_id">
+    <%= options_for_select(Cliente.listado, params[:cliente_id].to_i) %>
+  </select>
+  <input type="submit" value="Buscar" />
+</form>
+
+<% unless @cliente.nil? %>
+  <table class="decorated" width="100%">
+  	<tr>
+  		<th>Orden de Servicio</th>
+  		<th>Número de carpeta</th>
+      <th>Liquidador</th>
+      <th>Fecha liquidación</th>
+      <th>Total despacho</th>
+  		<th>Saldo deudor</th>
+      <th></th>
+  	</tr>
+    <% @cliente.carpetas.each do |c| %>
+      <tr>
+      	<td><%= c.orden_servicio %></td>
+      	<td><%= c.nro_carpeta %></td>
+      	<td><%= c.personal %></td>
+        <td><%= l c.liquidacion.fecha, :format => "%d, %B %Y" %></td>
+      	<td><%= c.liquidacion.total_despacho %></td>
+        <td><%= c.liquidacion.saldo %></td>
+        <td><%= link_to "ver mas", liquidacion_path(c.liquidacion.id), :target => '_blank' %></td>
+      </tr>
+    <% end %>
+
+  </table>
+<% end %>

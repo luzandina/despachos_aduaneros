@@ -1,0 +1,65 @@
+<p>
+  <b>Nombre:</b>
+  <%=h @cliente.nombre %>
+</p>
+
+<p>
+  <b>Nit o Cedula Identidad:</b>
+  <%=h @cliente.nit_ci %>
+</p>
+
+<p>
+  <b>Pais:</b>
+  <%=h @cliente.paise %>
+</p>
+
+
+<p>
+  <b>Departamento:</b>
+  <%=h @cliente.departamento_id %>
+</p>
+<p>
+  <b>Direccion:</b>
+  <%=h @cliente.direccion %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%=h @cliente.telefono %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @cliente.email %>
+</p>
+
+
+
+<p>
+  <b>Fecha:</b>
+  <%=h @cliente.fecha %>
+</p>
+
+<p>
+  <b>Comision:</b>
+  <%=h @cliente.comision %>
+</p>
+
+<p>
+  <b>Proveedor:</b>
+  <%=h @cliente.proveedor %>
+</p>
+
+<p>
+  <b>Parte Recepcion:</b>
+  <%=h @cliente.parte_recepcion %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%=h @cliente.descripcion %>
+</p>
+
+
+<%= link_to 'Editar', edit_cliente_path(@cliente) %> |
+<%= link_to 'Atras', clientes_path %>

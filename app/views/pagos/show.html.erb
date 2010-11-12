@@ -1,0 +1,23 @@
+<p>
+  <b>Liquidacion:</b>
+  <%=h @pago.liquidacion_id %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%=h @pago.fecha %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%=h @pago.cantidad %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%=h @pago.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_pago_path(@pago) %> |
+<%= link_to 'Back', pagos_path %>

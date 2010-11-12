@@ -1,0 +1,18 @@
+<p>
+  <b>id:</b>
+  <%=h @estado_despacho.es_desp_id %>
+</p>
+
+<p>
+  <b>Estado Despacho:</b>
+  <%=h @estado_despacho.es_despacho %>
+</p>
+
+<p>
+  <b>Descripcion estado:</b>
+  <%=h @estado_despacho.descripcion_estado %>
+</p>
+
+
+<%= link_to 'Editar', edit_estado_despacho_path(@estado_despacho) %> |
+<%= link_to 'Atras', estado_despachos_path %>

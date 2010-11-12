@@ -1,0 +1,26 @@
+<p>
+  <b>Orden Servicio:</b>
+  <%=h @carpeta.orden_servicio %>
+</p>
+
+<p>
+  <b>Nrocarpeta:</b>
+  <%=h @carpeta.nro_carpeta %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%=h @carpeta.fecha %>
+</p>
+
+<p>
+  <b>Liquidador:</b>
+  <%=h @carpeta.personal %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%=h @carpeta.cliente %>
+</p>
+<%= link_to 'Editar', edit_carpeta_path(@carpeta) %> |
+<%= link_to 'Atras', carpetas_path %>

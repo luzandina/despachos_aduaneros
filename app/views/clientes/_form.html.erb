@@ -1,0 +1,83 @@
+<style type="text/css">
+  table{ background: #FFFFF; }
+  #cliente_paise_id{ width:270px; }
+</style>
+<% form_for(@cliente) do |f| %>
+  <%= f.error_messages %>
+<table width="70%" align="center">
+  <tr>
+    <td width="50%" >
+      <p >
+        <%= f.label :nombre %><br />
+        <%= f.text_field :nombre %>
+      </p>
+      <p>
+        <%= f.label :nit_ci, "Nit o cedula de identidad"  %><br />
+        <%= f.text_field :nit_ci %>
+      </p>
+      
+      <p>
+        <%= f.label :paise_id, "Pais" %><br />
+        <%= f.collection_select :paise_id, Paise.all(:order => "nombre ASC"), :id, :nombre, :include_blank => true %>
+      </p>
+      <!--<p>
+        <%= f.label :departamento_id, "Departamento" %><br />
+        <%= f.collection_select :departamento_id, Departamento.all(:order => "departamento ASC"), :id, :departamento, :include_blank => true %>
+      </p>
+      -->
+      <p>
+        <%= f.label :direccion %><br />
+        <%= f.text_field :direccion %>
+      </p>
+      
+      <p>
+        <%= f.label :telefono %><br />
+        <%= f.text_field :telefono %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+    </td>
+    <td width="50%">
+      <p>
+        <%= f.label :fecha %><br />
+        <%= f.date_select :fecha %>
+      </p>
+      
+      <p>
+        <%= f.label :proveedor_id, "Proveedor" %><br />
+        <%= f.collection_select :proveedor_id, Proveedor.all(:order => "nombre ASC"), :id, :nombre, :include_blank => true %>
+      </p>
+            
+      <p>
+        <%= f.label :comision %><br />
+        <%= f.text_field :comision %>
+      </p>
+      
+      <p>
+        <%= f.label :parte_recepcion %><br />
+        <%= f.text_field :parte_recepcion %>
+      </p>
+      
+      <p>
+        <%= f.label :descripcion %><br />
+        <%= f.text_area :descripcion, :rows => 6  %>
+      </p>
+      
+    </td>
+      
+  </tr>
+</table>
+
+      <p align="center">
+        <%= f.submit 'Salvar' %>
+      </p>
+      
+<% end %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(['paise_id', 'proveedor_id']).each(function(i, el) {
+    $('#cliente_' + el).ufd();
+  });
+});
+</script>

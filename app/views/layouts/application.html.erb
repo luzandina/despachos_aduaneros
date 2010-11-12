@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <%= stylesheet_link_tag 'estilos_mm', 'plain' %>
+    <%= javascript_include_tag 'jquery-1.4.2.min' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <div id="header">
+      </div>
+      <% if session[:usuario_id] %>
+        <%= render :partial => 'layouts/menu' %>
+      <% end %>
+  
+      <div id="cont">
+        <div id="flashnotice"><%= flash[:notice] %></div>
+        <div id="flasherror"><%= flash[:error] %></div>
+        <%= yield %>    
+      </div>
+
+    </div>
+  </body>
+  
+</html>  
+
+

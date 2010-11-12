@@ -1,0 +1,48 @@
+<p>
+  <b>Orden Servicio:</b>
+  <%=h @despacho.orden_servicio %>
+</p>
+
+<p>
+  <b>Nro Carpeta:</b>
+  <%=h @despacho.nro_carpeta %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%=h @despacho.fecha %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%=h @despacho.cliente %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%=h @despacho.estado %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%=h @despacho.tipo %>
+</p>
+
+<p>
+  <b>Fecha Cierre:</b>
+  <%=h @despacho.fecha_cierre %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%=h @despacho.total %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%=h @despacho.descripcion %>
+</p>
+
+
+<%= link_to 'Editar', edit_despacho_path(@despacho) %> |
+<%= link_to 'Atras', despachos_path %>
