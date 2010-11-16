@@ -5,7 +5,7 @@ class Paise < ActiveRecord::Base
   
   # relacion de 1 a varios con documentos
   has_many :clientes
-  has_many :proveedor
+  has_many :proveedors
   
   # metodo que por defecto presenta el string
   def to_s

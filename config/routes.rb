@@ -1,4 +1,6 @@
 DespAduaneros::Application.routes.draw do
+  resources :paises
+
   resources :seguimientos
 
   resources :pagos
@@ -6,8 +8,6 @@ DespAduaneros::Application.routes.draw do
   resources :liquidacions
 
   resources :departamentos
-
-  resources :pais
 
   resources :tipo_documentos
 

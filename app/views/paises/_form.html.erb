@@ -1,0 +1,22 @@
+<%= simple_form_for(@paise) do |f| %>
+  <% if @paise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paise.errors.count, "error") %> no pudo salvar:</h2>
+
+      <ul>
+      <% @paise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="inputs">
+    <%= f.input :nombre %>
+    <%= f.input :codigo %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

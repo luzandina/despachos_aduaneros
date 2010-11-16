@@ -1,12 +1,12 @@
 <h1>Ingresar</h1>
 <% form_tag "/login" do |f| %>
   <div>
-    <label for="email">email</label><br /> 
-    <%= text_field_tag "email" %>
+    <label for="email">Email</label>
+    <%= text_field_tag "email", params[:email], :size => 40 %>
   </div>
   <div>
-    <label for="password">Contrasena</label><br />
-    <%= password_field_tag "password" %>
+    <label for="password">Contraseña</label>
+    <%= password_field_tag "password", '', :size => 40 %>
   </div>
   <%= submit_tag "Ingresar" %>
 <% end %>

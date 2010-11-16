@@ -8,29 +8,29 @@
   <tr>
     <td>
       <p>
-        <%= f.label :nombre %><br />
+        <%= f.label :nombre %>
         <%= f.text_field :nombre %>
       </p>
       <p>
-        <%= f.label :paise_id, "Pais" %><br />
+        <%= f.label :pais, "País" %>
         <%= f.collection_select :paise_id, Paise.all(:order => "nombre ASC"), :id, :nombre, :include_blank => true, :size => 15 %>
       </p>
       <!--<p>
       <p>
-        <%= f.label :ciudad %><br />
+        <%= f.label :ciudad %>
         <%= f.text_field :ciudad %>
       </p>
       -->
       <p>
-        <%= f.label :direccion %><br />
+        <%= f.label :direccion %>
         <%= f.text_field :direccion %>
       </p>
       <p>
-        <%= f.label :email %><br />
+        <%= f.label :email %>
         <%= f.text_field :email %>
       </p>
       <p>
-        <%= f.label :telefono %><br />
+        <%= f.label :telefono %>
         <%= f.text_field :telefono %>
       </p>
       
