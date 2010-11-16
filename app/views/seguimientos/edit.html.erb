@@ -1,6 +1,9 @@
-<h1>Editar seguimiento</h1>
+<h1>Editing seguimiento</h1>
 
-<%= render :partial => 'form' %>
+<p class="liks">
+  <%= link_to 'Ver', @seguimiento %> |
+  <%= link_to 'Lista', seguimientos_path %>
+</p>
 
-<%= link_to 'Ver', @seguimiento %> |
-<%= link_to 'Atras', seguimientos_path %>
+<%= render 'form' %>
+

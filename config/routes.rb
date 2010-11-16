@@ -1,4 +1,6 @@
 DespAduaneros::Application.routes.draw do
+  resources :seguimientos
+
   resources :pagos
 
   resources :liquidacions
@@ -27,7 +29,11 @@ DespAduaneros::Application.routes.draw do
 
   resources :despachos
 
-  resources :carpetas
+  resources :carpetas do
+    member do
+      get :datos
+    end
+  end
 
   resources :clientes
 
@@ -41,8 +47,6 @@ DespAduaneros::Application.routes.draw do
       get :codigo
     end
   end
-
-  resources :seguimientos
 
   resources :dashboard
 

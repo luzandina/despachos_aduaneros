@@ -85,4 +85,11 @@ class CarpetasController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # GET /carpetas/:id/datos
+  # Obtiene datods de la carpeta
+  def datos
+    @carpeta = Carpeta.find(params[:id])
+    render :text => { :cliente => @carpeta.cliente.to_s, :liquidador => @carpeta.personal.to_s }.to_json
+  end
 end

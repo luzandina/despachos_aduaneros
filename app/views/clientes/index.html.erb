@@ -1,5 +1,10 @@
 <h1>Lista de Clientes</h1>
-<%= link_to 'Nuevo Cliente', new_cliente_path %>
+<p class="links">
+  <%= link_to 'Nuevo Cliente', new_cliente_path %>
+</p>
+
+<%= will_paginate @clientes %>
+
 <table border="1">
   <tr>
     <th>Nombre</th>

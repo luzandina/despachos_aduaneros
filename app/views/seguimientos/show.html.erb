@@ -1,95 +1,90 @@
-<p>
-  <b>Orden servicio:</b>
-  <%=h @seguimiento.carpeta %>
+<h1>Seguimiento</h1>
+
+<p class="links">
+  <%= link_to 'Editar', edit_seguimiento_path(@seguimiento) %> |
+  <%= link_to 'Lista', seguimientos_path %>
 </p>
-p>
-  <b>Liquidador:</b>
-  <%=h @seguimiento.carpeta.personal %>
-</p>
-<p>
-  <b>Cliente:</b>
-  <%=h @seguimiento.carpeta.cliente %>
-</p>
-<p>
-  <b>Mercancia:</b>
-  <%=h @documento.carpeta.documento.mercancia %>
-</p>
+
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Recinto:</b>
-  <%=h @seguimiento.recinto %>
+  <%= @seguimiento.recinto %>
 </p>
 
 <p>
   <b>Regimen:</b>
-  <%=h @seguimiento.regimen %>
+  <%= @seguimiento.regimen %>
 </p>
 
 <p>
-  <b>Elaboracion DAV:</b>
-  <%=h @seguimiento.elaboracion_dav %>
+  <b>Elaboracion dav:</b>
+  <%= @seguimiento.elaboracion_dav %>
 </p>
 
 <p>
-  <b>Elaboracion DUI:</b>
-  <%=h @seguimiento.elaboracion_dui %>
+  <b>Elaboracion dui:</b>
+  <%= @seguimiento.elaboracion_dui %>
 </p>
 
 <p>
-  <b>Validacion DUI:</b>
-  <%=h @seguimiento.validacion_dui %>
+  <b>Validacion dui:</b>
+  <%= @seguimiento.validacion_dui %>
 </p>
 
 <p>
   <b>Numero registro:</b>
-  <%=h @seguimiento.numero_registro %>
+  <%= @seguimiento.numero_registro %>
 </p>
 
 <p>
   <b>Pago tributos:</b>
-  <%=h @seguimiento.pago_tributos %>
+  <%= @seguimiento.pago_tributos %>
 </p>
 
 <p>
   <b>Canal:</b>
-  <%=h @seguimiento.canal %>
+  <%= @seguimiento.canal %>
 </p>
 
 <p>
-  <b>Impresion DUI-DAV:</b>
-  <%=h @seguimiento.imprecion_dui_dav %>
+  <b>Impresion dui dav:</b>
+  <%= @seguimiento.impresion_dui_dav %>
 </p>
 
 <p>
-  <b>Presentacion Carpeta:</b>
-  <%=h @seguimiento.presentacion_carpeta %>
+  <b>Presentacion carpeta:</b>
+  <%= @seguimiento.presentacion_carpeta %>
 </p>
 
 <p>
-  <b>Tecnico Aduana:</b>
-  <%=h @seguimiento.tecnico_aduana %>
+  <b>Asignacion tecnico:</b>
+  <%= @seguimiento.asignacion_tecnico %>
 </p>
 
 <p>
-  <b>Levante Mercancia:</b>
-  <%=h @seguimiento.levante_mercancia %>
+  <b>Levante mercancia:</b>
+  <%= @seguimiento.levante_mercancia %>
 </p>
 
 <p>
   <b>Pago almacenaje entrega:</b>
-  <%=h @seguimiento.pago_almacenaje_entrega %>
+  <%= @seguimiento.pago_almacenaje_entrega %>
 </p>
 
 <p>
   <b>Facturacion:</b>
-  <%=h @seguimiento.facturacion %>
+  <%= @seguimiento.facturacion %>
 </p>
 
 <p>
   <b>Observaciones:</b>
-  <%=h @seguimiento.observaciones %>
+  <%= @seguimiento.observaciones %>
+</p>
+
+<p>
+  <b>Carpeta:</b>
+  <%= @seguimiento.carpeta_id %>
 </p>
 
 
-<%= link_to 'Editar', edit_seguimiento_path(@seguimiento) %> |
-<%= link_to 'Atras', seguimientos_path %>

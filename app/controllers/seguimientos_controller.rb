@@ -3,7 +3,7 @@ class SeguimientosController < ApplicationController
   # GET /seguimientos
   # GET /seguimientos.xml
   def index
-    @seguimientos = Seguimiento.all( :include => { :carpeta => [:cliente, :personal] })
+    @seguimientos = Seguimiento.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +19,6 @@ class SeguimientosController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @seguimiento }
-      format.json #{ render :json => @documento.to_json }
     end
   end
 
@@ -46,8 +45,7 @@ class SeguimientosController < ApplicationController
 
     respond_to do |format|
       if @seguimiento.save
-        flash[:notice] = 'El Seguimiento fue creado.'
-        format.html { redirect_to(@seguimiento) }
+        format.html { redirect_to(@seguimiento, :notice => 'Seguimiento was successfully created.') }
         format.xml  { render :xml => @seguimiento, :status => :created, :location => @seguimiento }
       else
         format.html { render :action => "new" }
@@ -63,8 +61,7 @@ class SeguimientosController < ApplicationController
 
     respond_to do |format|
       if @seguimiento.update_attributes(params[:seguimiento])
-        flash[:notice] = 'El Seguimiento fue actualizado.'
-        format.html { redirect_to(@seguimiento) }
+        format.html { redirect_to(@seguimiento, :notice => 'Seguimiento was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -1,142 +1,85 @@
-<style type="text/css">
-  ul li label{
-    width: 15em;
-    display: inline-block;
-  }
-</style>
-<% form_for(@seguimiento) do |f| %>
-  <%= f.error_messages %>
-<table  width="60%" align="center" >
-  <tr >
-    <td >
-        <%= f.label :carpeta_id, 'Orden Servicio' %><br />
-        <%= f.collection_select :carpeta_id, Carpeta.all(:order => 'orden_servicio ASC'), :id, :to_s, :include_blank => true %>
-           
-      <p>
-        <label for="">Liquidador</label>
-        <div id="liquidador"></div>
-      </p>
-      
-      <td >  
-        
-          <label for="">Cliente</label><br />
-          <div  id="cliente_nombre" ></div>
-        
-            
-      <p>
-        <label>Mercancia</label><br />
-        <div id="mercancia"></div>
-      </p>
-      
-    </td>
-  </tr>
-</table>
-<br /> 
+<%= simple_form_for(@seguimiento) do |f| %>
+  <% if @seguimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seguimiento.errors.count, "error") %> prohibited this seguimiento from being saved:</h2>
 
-<table width="80%" align="center">
-  <tr>
-    <td width="45%" >
-      <p>
-        <%= f.label :recinto %><br />
-        <%= f.text_field :recinto %>
-      </p>
-      <p>
-        <%= f.label :regimen %><br />
-        <%= f.text_field :regimen %>
-      </p>
-      <p>
-        <%= f.label :elaboracion_dav %><br />
-        <%= f.date_select :elaboracion_dav %>
-      </p>
-      <p>
-       <%= f.label :elaboracion_dui %><br />
-       <%= f.date_select :elaboracion_dui %>
-      </p>
-      <p>
-        <%= f.label :validacion_dui %><br />
-        <%= f.date_select :validacion_dui %>
-      </p>
-      <p>
-        <%= f.label :numero_registro %><br />
-        <%= f.text_field :numero_registro %>
-      </p>
-      <p>
-        <%= f.label :pago_tributos %><br />
-        <%= f.date_select :pago_tributos %>
-      </p>
-      <p>
-        <%= f.label :canal %><br />
-        <%= f.text_field :canal %>
-      </p>
-      <p>
-        <%= f.label :imprecion_dui_dav %><br />
-        <%= f.date_select :imprecion_dui_dav %>
-      </p>
-    </td>  
-    <td width="45%" >  
-      <p>
-        <%= f.label :presentacion_carpeta %><br />
-        <%= f.date_select :presentacion_carpeta %>
-      </p>
-      <p>
-        <%= f.label :tecnico_aduana %><br />
-        <%= f.text_field :tecnico_aduana %>
-      </p>
-      <p>
-        <%= f.label :levante_mercancia %><br />
-        <%= f.date_select :levante_mercancia %>
-      </p>
-      <p>
-        <%= f.label :pago_almacenaje_entrega %><br />
-        <%= f.date_select :pago_almacenaje_entrega %>
-      </p>
-      <p>
-        <%= f.label :facturacion %><br />
-        <%= f.date_select :facturacion %>
-      </p>
-      <p>
-        <%= f.label :observaciones %><br />
-        <%= f.text_area :observaciones, :rows => 12   %>
-      </p>
-    </td>
-  </tr>
- </table>
+      <ul>
+      <% @seguimiento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <p align="center">
-        <%= f.submit 'Salvar' %>
-      </p>
+  <%= f.association :carpeta, :label => 'Carpeta' %>
+
+  <div class="input">
+    <label for="">Cliente</label>
+    <span id="cliente"></span>
+  </div>
+
+  <div class="input">
+    <label for="">Liquidador</label>
+    <span id="liquidador"></span>
+  </div>
+
+  <%= f.input :recinto, :collection => Seguimiento::RECINTOS %>
+
+  <%= f.input :regimen, :label => 'Régimen' %>
+  
+  <%= f.input :elaboracion_dav, :label => "Elaboración dav" %>
+
+  <%= f.input :elaboracion_dui, :label => "Elaboración dui" %>
+
+  <%= f.input :validacion_dui, :label => 'Validación dui' %>
+
+  <%= f.input :numero_registro, :label => 'Número registro' %>
+
+  <%= f.input :pago_tributos %>
+
+  <%= f.input :canal, :collection => Seguimiento::CANALES %>
+
+  <%= f.input :impresion_dui_dav %>
+
+  <%= f.input :presentacion_carpeta %>
+
+  <%= f.input :asignacion_tecnico %>
+
+  <%= f.input :levante_mercancia %>
+
+  <%= f.input :pago_almacenaje_entrega %>
+
+  <%= f.input :facturacion %>
+
+  <%= f.input :observaciones, :as => :text, :input_html => {:rows => 5} %>
+
+
+  <%= f.submit %>
 <% end %>
 
 <script type="text/javascript">
-jQuery(function($) {
-  // Listado de clientes convertido a JSON
-    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.nit_ci } ; h  }.to_json %>;
-
-  function llenarCliente(id) {
-    if(id) {
-      var cliente = clientes[ id ];
-      $('#cliente_nombre').html(cliente.cliente);
-      $('#cliente_nit_ci').html(cliente.nit);
-      $('#liquidador').html(cliente.liquidador);
-      }else{
-        $('#cliente_nombre').html('');
-        $('#cliente_nit_ci').html('');
-        $('#liquidador').html('');
+  $(function() {
+      function obtenerDatos(id) {
+        $.ajax({
+          'url': '/carpetas/' + id + '/datos',
+          'dataMethod': 'get',
+          'dataType': 'json',
+          'success': function(resp) {
+            $('#cliente').html(resp.cliente);
+            $('#liquidador').html(resp.liquidador);
+          }
+        });
       }
-  }
 
-  // Evento para poder ver clientes
-  $('#documento_carpeta_id').bind('change keyup', function() {
-    llenarCliente($(this).val())
+      $('#seguimiento_carpeta_id').change(function() {
+        var id = $(this).val();
+        if(id == '')
+          return false;
+        obtenerDatos(id);
+      });
+
+      var carpeta_id = $('#seguimiento_carpeta_id').val();
+      if(carpeta_id != "")
+        obtenerDatos(carpeta_id);
   });
-
-  if( $('#documento_carpeta_id').val() ) {
-    llenarCliente($('#documento_carpeta_id').val());
-  }
-     
-
-  $('ul.documentos input:checkbox').click(function() {
-    $(this).parents('label:first').next('select').attr('disabled', !$(this).attr('checked') );
-  });
-});
 </script>

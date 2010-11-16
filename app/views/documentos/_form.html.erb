@@ -10,7 +10,7 @@
 <table  width="70%" align="center" >
   <tr >
     <td >
-        <%= f.label :carpeta_id, 'Orden Servicio' %><br />
+        <%= f.label :carpeta_id, 'Orden Servicio' %>
         <%= f.collection_select :carpeta_id, Carpeta.all(:order => 'orden_servicio ASC'), :id, :to_s, :include_blank => true %>
            
       <p>
@@ -19,28 +19,28 @@
       </p>
       
       <p>
-        <%= f.label :fecha %><br />
+        <%= f.label :fecha %>
         <%= f.date_select :fecha %>
       </p>
       
       <td >  
         
-          <label for="">Cliente</label><br />
+          <label for="">Cliente</label>
           <div  id="cliente_nombre" ></div>
         
         
         <p> 
-          <label for="">NIT o CI</label><br />
+          <label for="">NIT o CI</label>
           <div id="cliente_nit_ci"></div>
         </p>
         
         <p> 
-          <%= f.label :mercancia %><br />
+          <%= f.label :mercancia %>
           <%= f.text_field :mercancia %>
         </p>
         
         <p>
-          <%= f.label :peso %><br />
+          <%= f.label :peso %>
           <%= f.text_field :peso %>
         </p>
       </td>
@@ -48,7 +48,7 @@
   </tr>
   
 </table>
-     <br /> 
+      
  <table  width="80%" align="center">
   <tr>
     <td>
@@ -67,13 +67,13 @@
     </td>
     <td>
       <p>
-         <%= f.label :OBSERVACIONES %><br />
+         <%= f.label :OBSERVACIONES %>
          <%= f.text_area :descripcion_documentos, :rows => 12 %>
       </p>
    </td>
     
   </tr>
- </table><br /> 
+ </table> 
  
       <p align="center">
         <%= f.submit 'Salvar' %>
@@ -84,7 +84,7 @@
 <script type="text/javascript">
 jQuery(function($) {
   // Listado de clientes convertido a JSON
-    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.nit_ci } ; h  }.to_json %>;
+    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.nit_ci } ; h  }.to_json.html_safe %>;
 
   function llenarCliente(id) {
     if(id) {
