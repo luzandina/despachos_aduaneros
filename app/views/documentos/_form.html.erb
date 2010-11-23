@@ -84,7 +84,7 @@
 <script type="text/javascript">
 jQuery(function($) {
   // Listado de clientes convertido a JSON
-    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.nit_ci } ; h  }.to_json.html_safe %>;
+    var clientes = <%= Carpeta.all(:include => [:cliente, :personal] ).inject({}){ |h, v| h[v.id] = {:cliente => v.cliente.to_s, :liquidador => v.personal.to_s, :nit => v.cliente.try(:nit_ci) } ; h  }.to_json.html_safe %>;
 
   function llenarCliente(id) {
     if(id) {
