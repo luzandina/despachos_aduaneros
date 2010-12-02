@@ -3,7 +3,7 @@ class ProveedorsController < ApplicationController
   # GET /proveedors
   # GET /proveedors.xml
   def index
-    @proveedors = Proveedor.all
+    @proveedors = Proveedor.paginate(:page => @page)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,8 @@
 <h1>Lista Proveedores</h1>
-<%= link_to 'Nuevo Proveedor', new_proveedor_path %>
+<p>
+  <%= link_to 'Nuevo Proveedor', new_proveedor_path %>
+  </p>
+  <%= will_paginate @proveedors %>
 <table border="1">
   <tr>
     <th>Nombre</th>

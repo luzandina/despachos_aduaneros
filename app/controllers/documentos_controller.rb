@@ -3,7 +3,7 @@ class DocumentosController < ApplicationController
   # GET /documentos
   # GET /documentos.xml
   def index
-    @documentos = Documento.all( :include => { :carpeta => [:cliente, :personal] })
+    @documentos = Documento.includes( :carpeta => [:cliente, :personal] ).paginate(:page => @page)
 
     respond_to do |format|
       format.html # index.html.erb

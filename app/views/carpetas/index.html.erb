@@ -1,7 +1,8 @@
 <h1>Lista de Carpetas</h1>
 
-<%= link_to 'Nueva Carpeta', new_carpeta_path %>
+<p><%= link_to 'Nueva Carpeta', new_carpeta_path %></p>
 
+<%= will_paginate @carpetas %>
 <table border="1">
   <tr>
     <th>Fecha</th>
@@ -13,7 +14,7 @@
 
 <% @carpetas.each do |carpeta| %>
   <tr>
-    <td><%=h carpeta.fecha %></td>
+    <td><%=h lo carpeta.fecha %></td>
     <td><%=h carpeta.orden_servicio %></td>
     <td><%=h carpeta.nro_carpeta %></td>
     <td><%=h carpeta.personal %></td>

@@ -5,7 +5,7 @@ class CarpetasController < ApplicationController
   # GET /carpetas
   # GET /carpetas.xml
   def index
-    @carpetas = Carpeta.all
+    @carpetas = Carpeta.paginate(:page => @page)
 
     respond_to do |format|
       format.html # index.html.erb

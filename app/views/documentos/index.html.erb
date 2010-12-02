@@ -1,7 +1,10 @@
 <h1>Lista Documentos</h1>
 
+<p>
 <%= link_to 'Nuevo Documento', new_documento_path %>
+</p>
 
+<%= will_paginate @documentos %>
 <table border="1">
   <tr>
     <th>Orden Servicio - Nro Carpeta </th>
