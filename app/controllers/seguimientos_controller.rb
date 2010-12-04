@@ -4,7 +4,7 @@ class SeguimientosController < ApplicationController
   # GET /seguimientos
   # GET /seguimientos.xml
   def index
-    @seguimientos = Seguimiento.all
+    @seguimientos = Seguimiento.paginate(:page => @page)
 
     respond_to do |format|
       format.html # index.html.erb
