@@ -1,5 +1,6 @@
 # encoding: utf-8
 class PagosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /pagos
   # GET /pagos.xml
   def index

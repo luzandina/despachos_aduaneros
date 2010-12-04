@@ -1,5 +1,6 @@
 # encoding: utf-8
 class DespachosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /despachos
   # GET /despachos.xml
   def index

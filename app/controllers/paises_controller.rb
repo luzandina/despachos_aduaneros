@@ -1,4 +1,5 @@
 class PaisesController < ApplicationController
+  before_filter :verificar_usuario
   # GET /paises
   # GET /paises.xml
   def index

@@ -1,5 +1,6 @@
 # encoding: utf-8
 class UsuariosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /usuarios
   # GET /usuarios.xml
   def index

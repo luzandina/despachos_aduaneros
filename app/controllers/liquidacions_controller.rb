@@ -1,5 +1,6 @@
 # encoding: utf-8
 class LiquidacionsController < ApplicationController
+  before_filter :verificar_usuario
   # GET /liquidacions
   # GET /liquidacions.xml
   def index

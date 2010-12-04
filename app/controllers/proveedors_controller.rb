@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ProveedorsController < ApplicationController
+  before_filter :verificar_usuario
   # GET /proveedors
   # GET /proveedors.xml
   def index

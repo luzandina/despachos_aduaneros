@@ -1,5 +1,6 @@
 # encoding: utf-8
 class SeguimientosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /seguimientos
   # GET /seguimientos.xml
   def index

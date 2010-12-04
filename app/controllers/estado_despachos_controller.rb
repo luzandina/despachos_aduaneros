@@ -1,5 +1,6 @@
 # encoding: utf-8
 class EstadoDespachosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /estado_despachos
   # GET /estado_despachos.xml
   def index

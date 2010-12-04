@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ConsultasController < ApplicationController
+  before_filter :verificar_usuario
   def index
 
   end

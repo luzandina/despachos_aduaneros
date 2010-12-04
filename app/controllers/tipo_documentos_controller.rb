@@ -1,5 +1,6 @@
 # encoding: utf-8
 class TipoDocumentosController < ApplicationController
+  before_filter :verificar_usuario
   # GET /tipo_documentos
   # GET /tipo_documentos.xml
   def index
