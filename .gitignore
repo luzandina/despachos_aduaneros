@@ -11,6 +11,8 @@ public/attachment_metadatas
 tmp/*
 seema_pdf_doc
 public/javascripts/*.zip
+public/javascripts/js.js
+public/stylesheets/all_styles.css
 doc/wireframes
 *.*~
 Gemfile.lock

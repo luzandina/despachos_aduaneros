@@ -9,6 +9,7 @@ gem 'rails', '>=3.0.2'
 gem 'mysql2'
 gem 'will_paginate', '~>3.0.pre2'
 gem 'simple_form'
+gem 'smurf'
 
 # Use unicorn as the web server
 # gem 'unicorn'
