@@ -4,6 +4,10 @@
 <%= link_to 'Nuevo Documento', new_documento_path %>
 </p>
 
+<p>
+  <%= render :partial => 'layouts/buscar' %>
+</p>
+
 <%= will_paginate @documentos %>
 <table border="1">
   <tr>

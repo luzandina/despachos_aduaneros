@@ -4,7 +4,7 @@ class DocumentosController < ApplicationController
   # GET /documentos
   # GET /documentos.xml
   def index
-    @documentos = Documento.includes( :carpeta => [:cliente, :personal] ).paginate(:page => @page)
+    @documentos = Documento.search(params[:search]).order("carpetas.orden_servicio").paginate(:page => @page)
 
     respond_to do |format|
       format.html # index.html.erb

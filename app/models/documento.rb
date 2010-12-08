@@ -54,4 +54,9 @@ class Documento < ActiveRecord::Base
     self.documento = {} if documento.blank?
   end
   
+  # Para realizar busquedas
+  def self.search(search)
+    Documento.where(["carpetas.orden_servicio LIKE ?", "%#{search}%"]).includes(:carpeta => [:cliente, :personal])
+  end
+
 end
