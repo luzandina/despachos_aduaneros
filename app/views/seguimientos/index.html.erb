@@ -4,15 +4,17 @@
   <%= link_to 'New Seguimiento', new_seguimiento_path %>
 </p>
 
+<p>
+  <%= render :partial => "layouts/buscar" %>
+</p>
 <%= will_paginate @seguimientos %>
 
 <table>
   <tr>
+    <th>Orden de Servicio</th>
     <th title="Recinto">Reci</th>
     <th title="Regimen">Regi</th>
-    <th>Elabor dav</th>
-    <th>Elabor dui</th>
-    <th>Valid dui</th>
+    <th style="white-space:nowrap">Elab dav<br/><i>Elab dui</i><br/>Valid dui</th>
     <th>Numero registro</th>
     <th>Pago tributos</th>
     <th>Canal</th>
@@ -31,11 +33,14 @@
 
 <% @seguimientos.each do |seguimiento| %>
   <tr>
+    <td><%= seguimiento.carpeta.orden_servicio %></td>
     <td><%= seguimiento.recinto %></td>
     <td><%= seguimiento.regimen %></td>
-    <td><%= lo seguimiento.elaboracion_dav %></td>
-    <td><%= lo seguimiento.elaboracion_dui %></td>
-    <td><%= lo seguimiento.validacion_dui %></td>
+    <td style="white-space:nowrap">
+      <span title="Elaboración dav"><%= lo seguimiento.elaboracion_dav %></span><br/>
+      <i><span title="Elaboración dui"><%= lo seguimiento.elaboracion_dui %></span></i><br/>
+      <span title="Validación dui"><%= lo seguimiento.validacion_dui %></span>
+    </td>
     <td><%= seguimiento.numero_registro %></td>
     <td><%= lo seguimiento.pago_tributos %></td>
     <td><%= seguimiento.canal %></td>

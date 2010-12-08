@@ -5,4 +5,8 @@ class Seguimiento < ActiveRecord::Base
   CANALES = ["rojo", "amarillo", "verde"]
 
   belongs_to :carpeta
+
+  def self.search(search)
+    Seguimiento.where(["carpetas.orden_servicio LIKE ?", "%#{search}%"]).includes(:carpeta)
+  end
 end
