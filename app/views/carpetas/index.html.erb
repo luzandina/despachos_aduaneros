@@ -14,11 +14,11 @@
 
 <% @carpetas.each do |carpeta| %>
   <tr>
-    <td><%=h lo carpeta.fecha %></td>
-    <td><%=h carpeta.orden_servicio %></td>
-    <td><%=h carpeta.nro_carpeta %></td>
-    <td><%=h carpeta.personal %></td>
-    <td><%=h carpeta.cliente %></td>
+    <td><%= lo carpeta.fecha %></td>
+    <td><%= carpeta.orden_servicio %></td>
+    <td><%= carpeta.nro_carpeta %></td>
+    <td><%= carpeta.personal %></td>
+    <td><%= carpeta.cliente %></td>
     <td>
       <%= link_to("ver", carpeta ) %>
       <%= link_to("editar", edit_carpeta_path(carpeta) ) %>

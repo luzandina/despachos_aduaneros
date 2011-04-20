@@ -11,6 +11,10 @@ gem 'will_paginate', '~>3.0.pre2'
 gem 'simple_form'
 gem 'smurf'
 
+group :development do
+  gem "ruby-debug", :platforms => :mri_18
+  gem "ruby-debug19", :platforms => :mri_19
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 
